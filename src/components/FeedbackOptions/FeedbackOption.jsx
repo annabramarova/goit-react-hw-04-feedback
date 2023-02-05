@@ -4,10 +4,10 @@ import {Button, ButtonsList} from './FeedbackOptions.styled'
 
 const FeedbackOptions = ({ options, onLeaveFeedback }) => {
     return <ButtonsList>
-        {options.map((option, index) => {
+        {options.map((option) => {
             const text = option.slice(0, 1).toUpperCase() + option.slice(1);
             return <li key={option}>
-                <Button type='button' onClick={() => onLeaveFeedback(index)}>
+                <Button type='button' onClick={() => onLeaveFeedback(option)}>
                     {text}
                 </Button>
             </li>
@@ -15,6 +15,9 @@ const FeedbackOptions = ({ options, onLeaveFeedback }) => {
     </ButtonsList>
 }
 
+FeedbackOptions.defaultProps = {
+  options: [],
+};
 
 FeedbackOptions.propTypes = {
   options: PropTypes.arrayOf(PropTypes.string).isRequired,
